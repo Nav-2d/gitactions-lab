@@ -18,7 +18,7 @@ jobs:
 
       - name: display string
         run: |
-          array=${{ env.JUICE }}
+          array=${{ steps.my_string.outputs.content }}
           echo "The string is: ${{ array }}"
 
       # - name: Add comment to PR
