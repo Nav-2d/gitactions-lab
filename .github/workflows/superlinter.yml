@@ -9,18 +9,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
-      - name: Run Super-Linter
-        uses: github/super-linter@v3
-        env:
-          DEFAULT_BRANCH: main
-          GITHUb_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: create string
         run: |
           MY_STRING="hello world"
           echo "::set-output name=content::$MY_STRING"
         id: my_string
+        
       - name: display string
         run: |
           echo "The string is: ${{ steps.my_string.outputs.content }}"
