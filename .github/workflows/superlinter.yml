@@ -21,9 +21,9 @@ jobs:
           array: ${{ steps.my_string.outputs.content }}
         run: |
           echo "The string is: $array"
-          for item in ${array[*]}
+          for item in ${array[*]}; do
             echo "$item"
-
+          done
       # - name: Add comment to PR
       #   if: always()
       #   uses: mshick/add-pr-comment@v2
