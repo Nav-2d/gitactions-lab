@@ -20,7 +20,6 @@ jobs:
         env:
           array: ${{ steps.my_string.outputs.content }}
         run: |
-          echo "The string is: $array"
           for item in ${array[*]}; do
             echo "$item"
           done
@@ -28,5 +27,6 @@ jobs:
       #   if: always()
       #   uses: mshick/add-pr-comment@v2
       #   with:
+      #           echo "The string is: $array"
       #     message: |
       #       ${{ fromJSON(steps.my_string.outputs.content) }}
