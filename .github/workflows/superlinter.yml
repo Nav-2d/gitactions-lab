@@ -21,11 +21,8 @@ jobs:
         env:
           array: ${{ steps.my_string.outputs.content }}
         run: |
-          echo "The string is: $array.join('\r\n')"
-          echo "${array.map(item => '${item}').join(',\n')}"
-          for item in ${array[*]}; do
-            echo "$item"
-          done
+          echo "The string is: $array"
+
       # - name: Add comment to PR
       #   if: always()
       #   uses: mshick/add-pr-comment@v2
@@ -33,3 +30,8 @@ jobs:
       #           echo "The string is: $array"
       #     message: |
       #       ${{ fromJSON(steps.my_string.outputs.content) }}
+  # echo "The string is: $array.join('\r\n')"
+  #         echo "${array.map(item => '${item}').join(',\n')}"
+  #         for item in ${array[*]}; do
+  #           echo "$item"
+  #         done
