@@ -20,7 +20,7 @@ jobs:
         env:
           array: ${{ steps.my_string.outputs.content }}
         run: |
-          echo "The string is: ${{ array }}"
+          echo "The string is: $array"
 
       # - name: Add comment to PR
       #   if: always()
