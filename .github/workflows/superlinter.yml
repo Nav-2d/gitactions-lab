@@ -21,4 +21,4 @@ jobs:
         uses: mshick/add-pr-comment@v2
         with:
           message: |
-            ${{join(steps.my_string.outputs.content, " and ")}}
+            ${{join(steps.my_string.outputs.content, ' and ')}}
