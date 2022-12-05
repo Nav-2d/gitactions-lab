@@ -17,10 +17,7 @@ jobs:
         id: my_string
 
       - name: display string
-        if: github.event.number != ''
-        env:
-          array: ${{ steps.my_string.outputs.content }}
-        run: echo ${{ github.event.number }}
+        run: echo ${{ join(fromJSON(steps.my_string.outputs.content), '|') }}
 
       # - name: Add comment to PR
       #   if: always()
