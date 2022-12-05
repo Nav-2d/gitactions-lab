@@ -17,6 +17,7 @@ jobs:
         id: my_string
 
       - name: display string
+        if: github.event_name != 'pull_request'
         env:
           array: ${{ steps.my_string.outputs.content }}
         run: |
