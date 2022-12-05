@@ -20,6 +20,15 @@ jobs:
         run: |
           echo "The string is: ${{ fromJSON(steps.my_string.outputs.content) }}"
 
+      - name: Add comment to PR
+        if: always()
+        env:
+          array: ${{ fromJSON(steps.my_string.outputs.content) }}
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            echo "The string is: $array"
+
       # - name: Add comment to PR
       #   if: always()
       #   uses: mshick/add-pr-comment@v2
@@ -32,3 +41,5 @@ jobs:
   #         for item in ${array[*]}; do
   #           echo "$item"
   #         done
+
+#${{ join(fromJSON(steps.my_string.outputs.content) , '|') }}
