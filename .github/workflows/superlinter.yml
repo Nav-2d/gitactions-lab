@@ -21,7 +21,7 @@ jobs:
           array: ${{ steps.my_string.outputs.content }}
         run: |
           echo "The string is: $array.join('\r\n')"
-          echo "${array.map(item => `${item}`).join(',\n')}"
+          echo "${array.map(item => '${item}').join(',\n')}"
           for item in ${array[*]}; do
             echo "$item"
           done
