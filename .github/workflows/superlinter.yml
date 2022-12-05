@@ -16,6 +16,10 @@ jobs:
           echo "::set-output name=content::$MY_STRING"
         id: my_string
 
+      - name: display string
+        run: |
+          echo "The string is: ${{ fromJSON(steps.my_string.outputs.content) }}"
+
       - name: Add comment to PR
         if: always()
         uses: mshick/add-pr-comment@v2
