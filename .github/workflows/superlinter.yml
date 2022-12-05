@@ -17,11 +17,12 @@ jobs:
         id: my_string
 
       - name: display string
-        if: github.event_name != 'pull_request'
+        # if: github.event_name != 'pull_request'
         env:
           array: ${{ steps.my_string.outputs.content }}
         run: |
           echo "The string is: $array"
+          echo "The string is: ${{ github.event_name }}"
 
       # - name: Add comment to PR
       #   if: always()
