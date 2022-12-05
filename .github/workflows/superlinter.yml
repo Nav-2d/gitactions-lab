@@ -17,8 +17,9 @@ jobs:
         id: my_string
 
       - name: display string
+        env:
+          array: ${{ steps.my_string.outputs.content }}
         run: |
-          array=${{ steps.my_string.outputs.content }}
           echo "The string is: ${{ array }}"
 
       # - name: Add comment to PR
