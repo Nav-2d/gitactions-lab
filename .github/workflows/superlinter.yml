@@ -9,13 +9,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-          
+
       - name: create string
         run: |
           MY_STRING=["https://test2.html","https://test1.html","https://test.html"]
           echo "::set-output name=content::$MY_STRING"
         id: my_string
-        
-      - name: display string
-        run: |
-          echo "The string is: join(${{ steps.my_string.outputs.content }}, ', ')"
+
+      - name: Add comment to PR
+        if: always()
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            join(${{ steps.my_string.outputs.content }}, ', ')
