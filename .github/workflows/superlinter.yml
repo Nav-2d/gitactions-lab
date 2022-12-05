@@ -18,4 +18,4 @@ jobs:
         
       - name: display string
         run: |
-          echo "The string is: ${{ steps.my_string.outputs.content }}"
+          echo "The string is: join(${{ steps.my_string.outputs.content }}, ', ')"
