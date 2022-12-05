@@ -9,13 +9,37 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-          
+
       - name: create string
         run: |
           MY_STRING=["https://test2.html","https://test1.html","https://test.html"]
           echo "::set-output name=content::$MY_STRING"
         id: my_string
-        
+
       - name: display string
         run: |
-          echo "The string is: join(${{ steps.my_string.outputs.content }}, ', ')"
+          echo "The string is: ${{ steps.my_string.outputs.content }}"
+
+      - name: Add comment to PR
+        if: always()
+        env:
+          array: ${{ steps.my_string.outputs.content }}
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            echo "The string is: $array"
+
+      # - name: Add comment to PR
+      #   if: always()
+      #   uses: mshick/add-pr-comment@v2
+      #   with:
+      #           echo "The string is: $array"
+      #     message: |
+      #       ${{ fromJSON(steps.my_string.outputs.content) }}
+  # echo "The string is: $array.join('\r\n')"
+  #         echo "${array.map(item => '${item}').join(',\n')}"
+  #         for item in ${array[*]}; do
+  #           echo "$item"
+  #         done
+
+#${{ join(fromJSON(steps.my_string.outputs.content) , '|') }}
