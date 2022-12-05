@@ -20,6 +20,7 @@ jobs:
         env:
           array: ${{ steps.my_string.outputs.content }}
         run: |
+          echo "The string is: $array.join('\r\n')"
           for item in ${array[*]}; do
             echo "$item"
           done
