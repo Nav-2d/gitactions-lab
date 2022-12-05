@@ -12,7 +12,7 @@ jobs:
 
       - name: create string
         run: |
-          MY_STRING=["https://test2.html","https://test1.html","https://test.html"]
+          MY_STRING="https://test2.html","https://test1.html","https://test.html"
           echo "::set-output name=content::$MY_STRING"
         id: my_string
 
