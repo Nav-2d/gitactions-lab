@@ -22,7 +22,7 @@ jobs:
           array: ${{ steps.my_string.outputs.content }}
         run: |
           echo "The string is: $array"
-          echo "The string is: ${{ github.event_name }}"
+          echo "The string is: ${{ github.event.number }}"
 
       # - name: Add comment to PR
       #   if: always()
