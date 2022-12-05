@@ -18,7 +18,7 @@ jobs:
 
       - name: display string
         run: |
-          echo "The string is: ${{ steps.my_string.outputs.content }}"
+          echo "The string is: ${{ fromJSON(steps.my_string.outputs.content) }}"
 
       # - name: Add comment to PR
       #   if: always()
