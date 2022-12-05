@@ -17,7 +17,8 @@ jobs:
         id: my_string
 
       - name: display string
-        run: echo ${{ join(fromJSON(steps.my_string.outputs.content), '| ') }}
+        run: |
+          echo ${{ join(fromJSON(steps.my_string.outputs.content), '- ') }}
 
       # - name: Add comment to PR
       #   if: always()
